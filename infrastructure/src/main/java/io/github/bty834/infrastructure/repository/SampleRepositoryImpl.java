@@ -10,6 +10,8 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class SampleRepositoryImpl implements SampleRepository {
 
+
+
     public List<Sample> selectSamples(Long id){
         return new ArrayList<>();
     }

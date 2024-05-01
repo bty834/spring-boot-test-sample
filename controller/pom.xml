@@ -25,6 +25,11 @@
         </dependency>
 
         <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>1.2.47</version>
+        </dependency>
+        <dependency>
             <groupId>io.github.bty834</groupId>
             <artifactId>domain</artifactId>
             <version>${project.version}</version>

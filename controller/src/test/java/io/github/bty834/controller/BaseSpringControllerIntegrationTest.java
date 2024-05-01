@@ -9,6 +9,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.testcontainers.containers.GenericContainer;
 import org.testcontainers.containers.MySQLContainer;
 import org.testcontainers.lifecycle.Startables;
+import org.testcontainers.utility.MountableFile;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(
@@ -21,6 +22,8 @@ public class BaseSpringControllerIntegrationTest {
 
     static {
         mysqlContainer
+            .withReuse(true)
+            .withCopyFileToContainer(MountableFile.forClasspathResource("/schema.sql"),"/docker-entrypoint-initdb.d")
             .withExposedPorts(3306)
             .withUsername("root")
             .withPassword("root")
