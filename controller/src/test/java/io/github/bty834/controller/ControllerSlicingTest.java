@@ -32,7 +32,9 @@ class ControllerSlicingTest {
             .thenReturn(new ArrayList<>());
 
         mockMvc
-            .perform(MockMvcRequestBuilders.get("/sample").param("id", String.valueOf(1)))
+            .perform(MockMvcRequestBuilders
+                         .get("/sample")
+                         .param("id", String.valueOf(1)))
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON))
             .andExpect(jsonPath("$.size()").value(0));

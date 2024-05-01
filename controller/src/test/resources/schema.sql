@@ -4,4 +4,4 @@ CREATE TABLE sample
     username  VARCHAR(50)  NOT NULL
 );
 
-INSERT INTO sample VALUES (1,"bty");
+INSERT INTO sample VALUES (1,'bty');
