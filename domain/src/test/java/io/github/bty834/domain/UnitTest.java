@@ -24,9 +24,12 @@ import org.powermock.core.classloader.annotations.PowerMockIgnore;
 import org.powermock.core.classloader.annotations.PrepareOnlyThisForTest;
 import org.powermock.modules.junit4.PowerMockRunner;
 import org.skyscreamer.jsonassert.JSONAssert;
-
 import static org.mockito.ArgumentMatchers.eq;
 
+
+/**
+ * unit test -> integration test -> e2e
+ */
 @RunWith(PowerMockRunner.class)
 // mock static method
 @PrepareOnlyThisForTest({SampleUtil.class})

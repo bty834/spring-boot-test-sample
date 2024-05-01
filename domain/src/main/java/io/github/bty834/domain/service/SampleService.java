@@ -4,6 +4,7 @@ import io.github.bty834.domain.model.Sample;
 import io.github.bty834.domain.repository.SampleRepository;
 import io.github.bty834.domain.util.SampleUtil;
 import java.util.List;
+import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,7 +14,6 @@ import org.springframework.stereotype.Service;
 public class SampleService {
 
     private final SampleRepository sampleRepository;
-
 
     public List<Sample> listSamples(String id){
         return sampleRepository.selectSamples(SampleUtil.getSomething(id));
