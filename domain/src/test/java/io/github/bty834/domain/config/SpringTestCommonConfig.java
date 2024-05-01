@@ -1,6 +1,5 @@
 package io.github.bty834.domain.config;
 
-import io.github.bty834.domain.config.SampleConfig;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.SpringBootConfiguration;
 import org.springframework.context.annotation.Import;
