@@ -1,12 +1,10 @@
 package io.github.bty834.infrastructure.repository;
 
-
 import io.github.bty834.domain.model.Sample;
 import io.github.bty834.domain.repository.SampleRepository;
 import io.github.bty834.infrastructure.repository.mapper.SampleMapper;
 import io.github.bty834.infrastructure.repository.mapper.po.SamplePO;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
