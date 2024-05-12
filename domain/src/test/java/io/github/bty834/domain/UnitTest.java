@@ -24,6 +24,8 @@ import org.powermock.core.classloader.annotations.PowerMockIgnore;
 import org.powermock.core.classloader.annotations.PrepareOnlyThisForTest;
 import org.powermock.modules.junit4.PowerMockRunner;
 import org.skyscreamer.jsonassert.JSONAssert;
+
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.eq;
 
 
@@ -68,8 +70,10 @@ public class UnitTest {
             .when(SampleUtil.getSomething(eq("1")))
             .thenReturn(1L);
 
+        // 这里有any(),anyString()等
+        // 如果参数是String，mock方法传入的是null，则mock不生效，传null需指定为any()
         Mockito
-            .when(sampleRepository.selectSamples(1L))
+            .when(sampleRepository.selectSamples(any()))
             .thenReturn(new ArrayList<>());
 
         List<Sample> samples = sampleService.listSamples("1");
