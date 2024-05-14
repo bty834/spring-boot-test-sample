@@ -15,6 +15,8 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @WebMvcTest(SampleController.class)
+// 如果用org.junit.Test注解，则需要添加该RunWith
+// @RunWith(SpringRunner.class)
 class ControllerSlicingTest {
 
 
@@ -24,6 +26,7 @@ class ControllerSlicingTest {
     @MockBean
     private SampleService sampleService;
 
+    // 这里是 org.junit.jupiter.api.Test
     @Test
     void shouldReturnEmptyList() throws Exception {
 
