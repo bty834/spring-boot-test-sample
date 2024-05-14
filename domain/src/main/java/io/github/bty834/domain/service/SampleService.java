@@ -17,4 +17,8 @@ public class SampleService {
     public List<Sample> listSamples(String id){
         return sampleRepository.selectSamples(SampleUtil.getSomething(id));
     }
+
+    public void doSth(){
+        System.out.println("do");
+    }
 }

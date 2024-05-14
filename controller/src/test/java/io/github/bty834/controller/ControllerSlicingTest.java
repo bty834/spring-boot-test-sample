@@ -28,6 +28,11 @@ class ControllerSlicingTest {
     void shouldReturnEmptyList() throws Exception {
 
         Mockito
+            .doNothing()
+            .when(sampleService)
+            .doSth();
+
+        Mockito
             .when(sampleService.listSamples(Mockito.any()))
             .thenReturn(new ArrayList<>());
 
