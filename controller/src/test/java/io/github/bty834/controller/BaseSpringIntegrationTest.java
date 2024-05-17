@@ -1,6 +1,7 @@
 package io.github.bty834.controller;
 
 
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.web.server.LocalServerPort;
@@ -16,4 +17,9 @@ public class BaseSpringIntegrationTest {
 
     @LocalServerPort
     protected int serverPort;
+
+    @Test
+    public void test() {
+
+    }
 }

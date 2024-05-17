@@ -9,12 +9,12 @@ import io.github.bty834.domain.util.SampleUtil;
 import java.util.ArrayList;
 import java.util.List;
 import org.json.JSONException;
+import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
@@ -55,10 +55,10 @@ public class UnitTest {
         System.out.print("\n\n\n==============\n\n\n");
     }
 
-    @BeforeEach
+    @Before
     public void before(){}
 
-    @AfterEach
+    @After
     public void after(){}
 
     @Test

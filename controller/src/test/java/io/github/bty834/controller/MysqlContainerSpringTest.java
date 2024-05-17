@@ -1,6 +1,5 @@
 package io.github.bty834.controller;
 
-import org.springframework.boot.web.server.LocalServerPort;
 import org.springframework.test.context.DynamicPropertyRegistry;
 import org.springframework.test.context.DynamicPropertySource;
 import org.testcontainers.containers.MySQLContainer;
