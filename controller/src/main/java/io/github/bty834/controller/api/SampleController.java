@@ -1,5 +1,6 @@
 package io.github.bty834.controller.api;
 
+import io.github.bty834.controller.converter.SampleConverter;
 import io.github.bty834.controller.dto.SampleDTO;
 import io.github.bty834.domain.model.Sample;
 import io.github.bty834.domain.service.SampleService;
@@ -21,10 +22,11 @@ public class SampleController {
 
     private final SampleService sampleService;
 
+    private final SampleConverter sampleConverter;
 
     @GetMapping("/sample")
     public ResponseEntity<List<SampleDTO>> getSamples(@RequestParam("id") String id){
-
+        System.out.println(sampleConverter.test());
         List<Sample> samples = sampleService.listSamples(id);
         List<SampleDTO> collect = samples.stream().map(SampleDTO::convert).collect(Collectors.toList());
         return ResponseEntity.of(Optional.of(collect));

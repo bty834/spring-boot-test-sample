@@ -24,7 +24,6 @@ public class MysqlContainerSpringTest extends BaseSpringIntegrationTest {
     public static void setupDsProperties(DynamicPropertyRegistry registry) {
         Startables.deepStart(mysqlContainer).join();
 
-
         registry.add("ds.jdbcUrl", () -> mysqlContainer.getJdbcUrl());
         registry.add("ds.username", () -> mysqlContainer.getUsername());
         registry.add("ds.password", () -> mysqlContainer.getPassword());
