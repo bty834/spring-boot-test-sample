@@ -49,7 +49,7 @@ public class ControllerSliceTest {
 
 
         mockMvc.perform(MockMvcRequestBuilders
-                            .post("/sample")
+                            .post("/sample/test")
                             .contentType(MediaType.APPLICATION_JSON_UTF8)
                             .content("{}"))
             .andExpect(MockMvcResultMatchers.status().isOk())

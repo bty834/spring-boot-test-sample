@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping
+@RequestMapping("/sample")
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
 public class SampleController {
 
@@ -24,7 +24,7 @@ public class SampleController {
 
     private final SampleConverter sampleConverter;
 
-    @GetMapping("/sample")
+    @GetMapping("/test")
     public ResponseEntity<List<SampleDTO>> getSamples(@RequestParam("id") String id){
         System.out.println(sampleConverter.test());
         List<Sample> samples = sampleService.listSamples(id);

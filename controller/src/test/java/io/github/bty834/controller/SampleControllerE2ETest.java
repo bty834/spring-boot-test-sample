@@ -18,7 +18,7 @@ public class SampleControllerE2ETest extends MysqlContainerSpringTest {
     public void testSample() throws Exception {
         this.mockMvc
             .perform(MockMvcRequestBuilders
-                         .get("/sample")
+                         .get("/sample/test")
                          .param("id","1"))
             .andExpect(status().isOk())
             .andExpect(content().json("[{\"id\":1,\"username\":\"bty\"}]"))
