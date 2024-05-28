@@ -19,6 +19,7 @@ import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
+import org.mockito.internal.matchers.GreaterOrEqual;
 import org.powermock.api.mockito.PowerMockito;
 import org.powermock.core.classloader.annotations.PowerMockIgnore;
 import org.powermock.core.classloader.annotations.PrepareOnlyThisForTest;
@@ -26,6 +27,7 @@ import org.powermock.modules.junit4.PowerMockRunner;
 import org.skyscreamer.jsonassert.JSONAssert;
 
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.argThat;
 import static org.mockito.ArgumentMatchers.eq;
 
 
@@ -69,6 +71,13 @@ public class UnitTest {
         PowerMockito
             .when(SampleUtil.getSomething(eq("1")))
             .thenReturn(1L);
+
+        // PowerMockito.when(xxxObj.xxMethod(argThat(new GreaterOrEqual<>(updatedAtBaseLine))))
+        //     .thenThrow(new IllegalArgumentException());
+        //
+        // PowerMockito.when(xxxObj.xxMethod(argThat(new GreaterOrEqual<>(updatedAtBaseLine))))
+        //     .thenThrow(new IllegalArgumentException());
+
 
         // 这里有any(),anyString()等
         // 如果参数是String，mock方法传入的是null，则mock不生效，传null需指定为any()
