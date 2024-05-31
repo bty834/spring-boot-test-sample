@@ -72,12 +72,11 @@ public class UnitTest {
             .when(SampleUtil.getSomething(eq("1")))
             .thenReturn(1L);
 
-        // PowerMockito.when(xxxObj.xxMethod(argThat(new GreaterOrEqual<>(updatedAtBaseLine))))
-        //     .thenThrow(new IllegalArgumentException());
-        //
-        // PowerMockito.when(xxxObj.xxMethod(argThat(new GreaterOrEqual<>(updatedAtBaseLine))))
-        //     .thenThrow(new IllegalArgumentException());
+        PowerMockito.when(sampleRepository.selectSamples(argThat(id -> id.equals(1L))))
+                        .thenReturn(new ArrayList<>());
 
+        PowerMockito.when(sampleRepository.selectSamples(argThat(new GreaterOrEqual<>(1L))))
+            .thenReturn(new ArrayList<>());
 
         // 这里有any(),anyString()等
         // 如果参数是String，mock方法传入的是null，则mock不生效，传null需指定为any()
