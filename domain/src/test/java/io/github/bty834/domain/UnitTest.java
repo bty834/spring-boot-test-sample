@@ -1,6 +1,5 @@
 package io.github.bty834.domain;
 
-
 import com.jayway.jsonpath.JsonPath;
 import io.github.bty834.domain.model.Sample;
 import io.github.bty834.domain.repository.SampleRepository;
@@ -16,6 +15,7 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mockito.ArgumentCaptor;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
@@ -68,9 +68,11 @@ public class UnitTest {
 
         PowerMockito.mockStatic(SampleUtil.class);
 
+        // 注意所有when内部的方法参数必须用org.mockito.ArgumentMatchers的方法包一层，不能直接传
         PowerMockito
-            .when(SampleUtil.getSomething(eq("1")))
+            .when(SampleUtil.getSomething(eq("1"))) // 反例：.when(SampleUtil.getSomething("1"))
             .thenReturn(1L);
+
 
         PowerMockito.when(sampleRepository.selectSamples(argThat(id -> id.equals(1L))))
                         .thenReturn(new ArrayList<>());
@@ -84,13 +86,25 @@ public class UnitTest {
             .when(sampleRepository.selectSamples(any()))
             .thenReturn(new ArrayList<>());
 
+        // verify方法调用次数
+        Mockito.verify(sampleRepository, Mockito.times(1)).selectSamples(any());
+        // Mockito.verify(sampleRepository, Mockito.times(1)).selectSamples(argThat(i->i.equals(1)));
+
+        // capture参数验证
+        ArgumentCaptor<Long> paramCap = ArgumentCaptor.forClass(Long.class);
+        Mockito.verify(sampleRepository, Mockito.times(1)).selectSamples(paramCap.capture());
+        Assert.assertNotNull(paramCap.getValue());
+
+
+        Mockito.verify(sampleRepository, Mockito.times(1)).selectSamples(any());
+
         List<Sample> samples = sampleService.listSamples("1");
 
-        Assert.assertEquals(samples.size(),0);
-
+        // 如果sample.size()返回Long，需要加一个 sample.size().longValue()方法
+        Assert.assertEquals(0,samples.size());
 
         // 比较JSON
-        JSONAssert.assertEquals("{\"a\":1}","{\"a\":1}",false);
+        JSONAssert.assertEquals("{a:1,b: \"bVal\"}","{\"a\":1}",false);
         // 解析JSON
         Assert.assertEquals(JsonPath.parse("{\"a\":1}").read("$.a").getClass(),Integer.class);
     }
