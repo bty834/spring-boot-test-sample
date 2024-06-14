@@ -12,6 +12,7 @@ import org.powermock.modules.junit4.PowerMockRunner;
 import org.powermock.modules.junit4.PowerMockRunnerDelegate;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.boot.test.mock.mockito.SpyBean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -25,6 +26,7 @@ import static org.mockito.ArgumentMatchers.eq;
 public class ControllerSliceTestWithPowerMockito {
 
     // @Import加入需要扫描的Bean
+    @Configuration
     @Import(SampleController.class)
     static class Context {
 
