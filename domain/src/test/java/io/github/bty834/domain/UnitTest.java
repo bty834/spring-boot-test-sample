@@ -95,6 +95,13 @@ public class UnitTest {
         Mockito.verify(sampleRepository, Mockito.times(1)).selectSamples(paramCap.capture());
         Assert.assertNotNull(paramCap.getValue());
 
+       // 运行参数为Runnable的方式
+        Mockito.doAnswer(invocation -> {
+            Object[] arguments = invocation.getArguments();
+            Runnable runnable = (Runnable)arguments[0];
+            runnable.run();
+            return null;
+        }).when(sampleRepository).run(any(Runnable.class));
 
         Mockito.verify(sampleRepository, Mockito.times(1)).selectSamples(any());
 
